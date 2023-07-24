@@ -1,15 +1,14 @@
-// dashboard js code
 import $ from 'jquery';
-import _ from 'lodash';
+import debounce from 'lodash/debounce';
+
+function updateCounter() {
+  const countElement = $('#count');
+  let count = parseInt(countElement.text()) || 0;
+  count++;
+  countElement.text(`${count} clicks on the button`);
+}
 
 $(document).ready(function () {
-  let count = 0;
-
-  const updateCounter = () => {
-    count++;
-    $('#count').text(`${count} clicks on the button`);
-  };
-
   $('body').append('<p>Holberton Dashboard</p>');
   $('body').append('<p>Dashboard data for the students</p>');
 
@@ -19,8 +18,6 @@ $(document).ready(function () {
   $('body').append(button);
 
   $('body').append('<p id="count"></p>');
-  $('body').append('<p>Copyright - Holberton School</p>');
-
-  const debouncedUpdateCounter = _.debounce(updateCounter, 500);
-  button.on('click', debouncedUpdateCounter);
+  $('body').append('<p>Copyright - Holberton School</p>')
+  button.on('click', debounce(updateCounter, 500));
 });
