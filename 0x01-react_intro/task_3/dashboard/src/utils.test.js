@@ -1,4 +1,4 @@
-import { getFullYear, getFooterCopy, getLatestNotification } from '../../task_2/dashboard/src/utils';
+import { getFullYear, getFooterCopy, getLatestNotification } from './utils';
 
 describe('getFullYear', () => {
   it('should return the current year', () => {
