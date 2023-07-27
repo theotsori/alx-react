@@ -1,0 +1,18 @@
+.Notifications {
+  border: 1px dashed red;
+  padding: 10px;
+}
+
+.Notifications ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.Notifications ul li {
+  color: blue;
+  padding: 5px 0;
+}
+
+.Notifications ul li[data-priority="urgent"] {
+  color: red;
+}
