@@ -27,7 +27,7 @@ const CourseListRow = ({ isHeader = false, textFirstCell, textSecondCell = null}
   }
 };
 
-CourseListRow.PropTypes = {
+CourseListRow.propTypes = {
   isHeader: PropTypes.bool,
   textFirstCell: PropTypes.string.isRequired,
   textSecondCell: PropTypes.string,
