@@ -3,8 +3,10 @@ import './Notifications.css';
 import closeIcon from '../assets/close-icon.png';
 import { getLatestNotification } from '../utils/utils';
 import NotificationItem from './NotificationItem';
+import NotificationItemShape from './NotificationItemShape';
+import ProtoTypes from 'prop-types';
 
-function Notifications({ displayDrawer }) {
+function Notifications({ displayDrawer, listNotifications }) {
   return (
     <>
       {displayDrawer && (
@@ -22,13 +24,27 @@ function Notifications({ displayDrawer }) {
         </button>
         <p>Here is the list of notifications</p>
         <ul>
-          <NotificationItem type='default' value='New course available' />
-          <NotificationItem type='urgent' value='New resume available' />
-          <NotificationItem type='urgent' html={{ __html: getLatestNotification() }} />
+          {listNotifications.length > 0 ? (
+            listNotifications.map((notification) => (
+              <NotificationItem
+                key={notification.id}
+                type={notification.type}
+                value={notification.value}
+                html={notification.html}
+              />
+            ))
+          ) : (
+            <NotificationItem type='default' value='No new notification for now'/>
+          )}
         </ul>
       </div>
     </>
   );
 }
+
+Notifications.propTypes = {
+  displayDrawer: PropTypes.bool.isRequired,
+  listNotifications: ProtoTypes.arrayOf(NotificationItemShape).isRequired,
+};
 
 export default Notifications;
