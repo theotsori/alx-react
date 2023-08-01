@@ -5,10 +5,11 @@ import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 import CourseList from '../CourseList/CourseList';
 import PropTypes from 'prop-types';
+import { getLatestNotification } from '../utils/utils';
+import BodySection from '../BodySection/BodySection';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom';
 
 import './App.css';
-import { getLatestNotification } from '../utils/utils';
-import NotificationItemShape from '../Notifications/NotificationItemShape';
 
 class App extends React.Component {
   listCourses = [
@@ -76,6 +77,14 @@ class App extends React.Component {
         <div className='App'>
           <Header />
           {this.props.isLoggedIn ? <CourseList listCourses={listCourses} /> : <Login />}
+          <BodySection title='Test'>
+            <p>Test Parent</p>
+            <p>Test Child</p>
+          </BodySection>
+          <BodySectionWithMarginBottom title='Test'>
+            <p>Test Parent</p>
+            <p>Test Child</p>
+          </BodySectionWithMarginBottom>
           <Footer />
         </div>
       </React.Fragment>
